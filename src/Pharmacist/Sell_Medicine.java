@@ -425,8 +425,18 @@ public class Sell_Medicine {
                         String filenameTimestamp = filenameDateFormat.format(new Date());
                         String fileTimestamp = DateFormat.format(new Date());
 
+                        // Use user's home directory + Desktop (more portable)
+                        String userHome = System.getProperty("user.home");
+                        String directoryPath = userHome + File.separator + "Desktop" + File.separator + "PharmacyBills";
+
+                        // Create the directory if it doesn't exist
+                        File directory = new File(directoryPath);
+                        if (!directory.exists()) {
+                            directory.mkdirs();
+                        }
+
                         // Specify the file path where the PDF will be generated
-                        filePath = "C:/Users/salah/Downloads/Pharmacy Management SSystem/media" + "Bill_" + filenameTimestamp + ".pdf";
+                        filePath = directoryPath + File.separator + "Bill_" + filenameTimestamp + ".pdf";
 
                         PdfWriter.getInstance(document, new FileOutputStream(filePath));
                         document.open();
