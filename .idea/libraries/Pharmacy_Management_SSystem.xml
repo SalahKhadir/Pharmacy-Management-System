@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Pharmacy Management SSystem">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/jcalendar-1.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/itextpdf-5.5.9.jar!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-connector-j-8.2.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
