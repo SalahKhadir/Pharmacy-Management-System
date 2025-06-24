@@ -106,13 +106,13 @@ public class view_user extends JFrame {
             ResultSet resultSet = statement.executeQuery("SELECT * FROM users");
             while (resultSet.next()) {
                 model.addRow(new Object[]{
-                        resultSet.getString("id"),
+                        resultSet.getString("username"), // Changed from "id" to "username"
                         resultSet.getString("name"),
                         resultSet.getString("user_role"),
                         resultSet.getString("Joiningdate"),
                         resultSet.getString("mobile_number"),
                         resultSet.getString("IdCardNo"),
-                        resultSet.getString("username"),
+                        resultSet.getString("username"), // This might be duplicate, consider removing
                         resultSet.getString("password"),
                         resultSet.getString("Salary")
                 });
@@ -130,8 +130,9 @@ public class view_user extends JFrame {
             return;
         }
 
-        String id = model.getValueAt(index, 0).toString();
-        String usernameInTable = model.getValueAt(index, 6).toString();
+        String usernameToDelete = model.getValueAt(index, 0).toString(); // Get username from first column
+        String usernameInTable = model.getValueAt(index, 0).toString(); // Same as above since we're using username as identifier
+
         if (username.equals(usernameInTable)) {
             JOptionPane.showMessageDialog(null, "You cannot delete your own account.");
         } else {
@@ -141,8 +142,8 @@ public class view_user extends JFrame {
                     Class.forName("com.mysql.cj.jdbc.Driver");
                     Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/gestionpharmacie", "root", "root");
 
-                    PreparedStatement st = connection.prepareStatement("DELETE FROM users WHERE id=?");
-                    st.setString(1, id);
+                    PreparedStatement st = connection.prepareStatement("DELETE FROM users WHERE username=?"); // Changed from id to username
+                    st.setString(1, usernameToDelete);
                     st.executeUpdate();
                     JOptionPane.showMessageDialog(null, "User deleted successfully");
 

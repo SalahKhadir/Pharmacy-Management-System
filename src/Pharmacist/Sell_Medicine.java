@@ -426,11 +426,11 @@ public class Sell_Medicine {
                         String fileTimestamp = DateFormat.format(new Date());
 
                         // Specify the file path where the PDF will be generated
-                        filePath = "C:/Users/lenovo/Desktop/Printbilla" + "Bill_" + filenameTimestamp + ".pdf";
+                        filePath = "C:/Users/salah/Downloads/Pharmacy Management SSystem/media" + "Bill_" + filenameTimestamp + ".pdf";
 
                         PdfWriter.getInstance(document, new FileOutputStream(filePath));
                         document.open();
-                        document.add(new Paragraph("                                                Elghad Pharmacy\n\n"));
+                        document.add(new Paragraph("                                                Ahssen Pharmacy\n\n"));
                         document.add(new Paragraph("Pos:   221                                             Mop:  Cash Sales"));
                         document.add(new Paragraph("Invoice Number:      " + billID));
                         document.add(new Paragraph("Date:     " + fileTimestamp));
